@@ -5,10 +5,14 @@ var bandcamp = {
   }
 };
 
-$(function(){
-  bandcamp.find();
-  console.log('BB: found', bandcamp.album);  
-  
+$(function(){  
   var port = chrome.extension.connect({name: "play"});
-  port.postMessage({track: bandcamp.album.trackinfo[0].file});
+  
+  var addToList = $('<button />', {text: "Add to list", id: "add-to-list"});
+  addToList.appendTo('#customHeader');
+  addToList.bind('click', function(){
+    bandcamp.find();
+    console.log('BB: found', bandcamp.album);  
+    port.postMessage({track: bandcamp.album.trackinfo[0].file});    
+  });  
 })
