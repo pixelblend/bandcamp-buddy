@@ -17,7 +17,7 @@
       text: "Add to list",
       id: "add-to-list"
     });
-    addToList.appendTo('#customHeader');
+    addToList.appendTo('body');
     return addToList.bind('click', function() {
       bandcamp.find();
       console.log('BB: found', bandcamp.album);
