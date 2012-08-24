@@ -13,6 +13,6 @@
     "hulk-hogan": "0.0.9"
   },
   "scripts": {
-    "watch": "./node_modules/coffee-script/bin/coffee ./bin/lessc-watch.coffee src/css extension/css & ./node_modules/coffee-script/bin/coffee -wc -o ./extension/js ./src/js & wait"
+    "watch": "./node_modules/coffee-script/bin/coffee ./bin/lessc-watch.coffee src/css extension/css & ./node_modules/coffee-script/bin/coffee -wc -o ./extension/js/lib ./src/js/lib & wait"
   }
 }
