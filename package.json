@@ -7,9 +7,12 @@
   },
   "devDependencies": {
     "coffee-script": "~1.2.0",
-    "less": "~1.3.0"
+    "less": "~1.3.0",
+    "express": "~3.0.0rc3",
+    "connect-assets": "~2.3.3",
+    "hulk-hogan": "0.0.9"
   },
   "scripts": {
-    "watch": "./node_modules/coffee-script/bin/coffee ./bin/lessc-watch.coffee src/less extension/css & ./node_modules/coffee-script/bin/coffee -wc -o ./extension/js ./src/coffee & wait"
+    "watch": "./node_modules/coffee-script/bin/coffee ./bin/lessc-watch.coffee src/css extension/css & ./node_modules/coffee-script/bin/coffee -wc -o ./extension/js ./src/js & wait"
   }
 }
