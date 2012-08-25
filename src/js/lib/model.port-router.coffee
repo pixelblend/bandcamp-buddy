@@ -1,4 +1,4 @@
-Class PortRouter
+class PortRouter
   port: null
   constructor: ->
     @port = chrome.extension.connect name: "library"

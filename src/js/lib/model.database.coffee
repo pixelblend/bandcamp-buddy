@@ -14,6 +14,7 @@ class Database
   logError: (event) ->
     (event) ->
       console.error('Database error', event.target.errorCode)
+
   migrate: ->
     #
   requestAlbums: ->

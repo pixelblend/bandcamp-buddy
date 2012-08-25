@@ -1,17 +1,18 @@
-class ContentScript extends Backbone.View
+class ContentScriptView extends Backbone.View
   tagName: 'button'
   attributes:
     id: 'add-to-list'
-    text: 'Add to list'
   events:
     click: 'addToList'
   initialize: (model) ->
     @model = model
+    @$el.text 'Add to list'
+    @$el.hide()
     @$el.appendTo('body')
   render: ->
-    #
+    @$el.show()
   addToList: ->
     @model.scrape()
 
-window.ContentScript = ContentScript
+window.ContentScriptView = ContentScriptView
 

@@ -1,5 +1,5 @@
 class AlbumScraper
-  album: nil
+  album: null
   constructor: ->
     #
   parse: (dom='html') ->
@@ -11,7 +11,8 @@ class AlbumScraper
 
     @album = TralbumData
     if @album?
-      #send to port-router
+      # send to port-router
+      console.log 'album', @album
 
 window.AlbumScraper = AlbumScraper
 

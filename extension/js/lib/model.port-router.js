@@ -1,18 +1,25 @@
 (function() {
+  var PortRouter;
 
-  Class(PortRouter({
-    port: null,
-    constructor: function() {
-      return this.port = chrome.extension.connect({
+  PortRouter = (function() {
+
+    PortRouter.prototype.port = null;
+
+    function PortRouter() {
+      this.port = chrome.extension.connect({
         name: "library"
       });
-    },
-    sendAlbum: function(album) {
+    }
+
+    PortRouter.prototype.sendAlbum = function(album) {
       return port.postMessage({
         track: album
       });
-    }
-  }));
+    };
+
+    return PortRouter;
+
+  })();
 
   window.PortRouter = PortRouter;
 

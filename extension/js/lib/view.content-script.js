@@ -1,42 +1,45 @@
 (function() {
-  var ContentScript,
+  var ContentScriptView,
     __hasProp = Object.prototype.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
-  ContentScript = (function(_super) {
+  ContentScriptView = (function(_super) {
 
-    __extends(ContentScript, _super);
+    __extends(ContentScriptView, _super);
 
-    function ContentScript() {
-      ContentScript.__super__.constructor.apply(this, arguments);
+    function ContentScriptView() {
+      ContentScriptView.__super__.constructor.apply(this, arguments);
     }
 
-    ContentScript.prototype.tagName = 'button';
+    ContentScriptView.prototype.tagName = 'button';
 
-    ContentScript.prototype.attributes = {
-      id: 'add-to-list',
-      text: 'Add to list'
+    ContentScriptView.prototype.attributes = {
+      id: 'add-to-list'
     };
 
-    ContentScript.prototype.events = {
+    ContentScriptView.prototype.events = {
       click: 'addToList'
     };
 
-    ContentScript.prototype.initialize = function(model) {
+    ContentScriptView.prototype.initialize = function(model) {
       this.model = model;
+      this.$el.text('Add to list');
+      this.$el.hide();
       return this.$el.appendTo('body');
     };
 
-    ContentScript.prototype.render = function() {};
+    ContentScriptView.prototype.render = function() {
+      return this.$el.show();
+    };
 
-    ContentScript.prototype.addToList = function() {
+    ContentScriptView.prototype.addToList = function() {
       return this.model.scrape();
     };
 
-    return ContentScript;
+    return ContentScriptView;
 
   })(Backbone.View);
 
-  window.ContentScript = ContentScript;
+  window.ContentScriptView = ContentScriptView;
 
 }).call(this);
