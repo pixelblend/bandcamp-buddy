@@ -1,7 +1,7 @@
 class Application
   contentScript: ->
     window.albumScraper = new window.AlbumScraper()
-    window.contentView  = new window.ContentScriptView(albumScraper)
+    window.contentView  = new window.ContentScriptView model: albumScraper
     window.portRouter   = new window.PortRouter()
 
     contentView.render()

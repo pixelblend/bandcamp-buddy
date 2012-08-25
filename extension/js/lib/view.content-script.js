@@ -21,11 +21,13 @@
       click: 'addToList'
     };
 
-    ContentScriptView.prototype.initialize = function(model) {
-      this.model = model;
+    ContentScriptView.prototype.initialize = function() {
+      var _base;
+      this.model = this.options.model;
+      this.container = (typeof (_base = this.options).container === "function" ? _base.container(this.options.container) : void 0) ? void 0 : 'body';
       this.$el.text('Add to list');
       this.$el.hide();
-      return this.$el.appendTo('body');
+      return this.$el.appendTo(this.container);
     };
 
     ContentScriptView.prototype.render = function() {
@@ -33,7 +35,7 @@
     };
 
     ContentScriptView.prototype.addToList = function() {
-      return this.model.scrape();
+      return this.model.parse();
     };
 
     return ContentScriptView;

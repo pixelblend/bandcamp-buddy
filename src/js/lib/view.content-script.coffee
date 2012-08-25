@@ -4,15 +4,16 @@ class ContentScriptView extends Backbone.View
     id: 'add-to-list'
   events:
     click: 'addToList'
-  initialize: (model) ->
-    @model = model
+  initialize: () ->
+    @model = @options.model
+    @container = if @options.container? @options.container else 'body'
     @$el.text 'Add to list'
     @$el.hide()
-    @$el.appendTo('body')
+    @$el.appendTo(@container)
   render: ->
     @$el.show()
   addToList: ->
-    @model.scrape()
+    @model.parse()
 
 window.ContentScriptView = ContentScriptView
 
