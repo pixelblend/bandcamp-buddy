@@ -10,7 +10,7 @@
     AlbumScraper.prototype.parse = function(dom) {
       var albumVar;
       if (dom == null) dom = 'html';
-      albumVar = $(dom).html().match(/var TralbumData (.|\n)*?^};$/gim)[0];
+      albumVar = $(dom).html().match(/var TralbumData (.|\n)*?^};/gim)[0];
       eval(albumVar);
       this.album = TralbumData;
       if (this.album != null) {

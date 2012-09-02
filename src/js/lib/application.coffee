@@ -3,6 +3,8 @@ class Application
     window.albumScraper = new window.AlbumScraper()
     window.contentView  = new window.ContentScriptView model: albumScraper
     window.portRouter   = new window.PortRouter()
+    portRouter.albumScraper = albumScraper
+    portRouter.bindAll()
 
     contentView.render()
   background: ->

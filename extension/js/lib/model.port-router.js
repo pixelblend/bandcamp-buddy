@@ -1,5 +1,6 @@
 (function() {
-  var PortRouter;
+  var PortRouter,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   PortRouter = (function() {
 
@@ -10,7 +11,7 @@
     PortRouter.prototype.port = null;
 
     function PortRouter() {
-      this.port = chrome.extension.connect({
+      this.sendAlbum = __bind(this.sendAlbum, this);      this.port = chrome.extension.connect({
         name: "library"
       });
     }
@@ -27,7 +28,7 @@
     };
 
     PortRouter.prototype.sendAlbum = function(album) {
-      return port.postMessage({
+      return this.port.postMessage({
         track: album
       });
     };

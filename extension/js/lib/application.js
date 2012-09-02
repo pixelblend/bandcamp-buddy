@@ -11,6 +11,8 @@
         model: albumScraper
       });
       window.portRouter = new window.PortRouter();
+      portRouter.albumScraper = albumScraper;
+      portRouter.bindAll();
       return contentView.render();
     };
 

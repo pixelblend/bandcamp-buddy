@@ -8,8 +8,9 @@ class PortRouter
     for model, event of @bindings
       @[model].bind 'update', @[event]
 
-  sendAlbum: (album) ->
-    port.postMessage track: album
+  sendAlbum: (album) =>
+    #console.log 'posting', album
+    @port.postMessage track: album
 
 window.PortRouter = PortRouter
 
