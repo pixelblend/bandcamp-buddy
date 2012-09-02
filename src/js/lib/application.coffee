@@ -3,20 +3,21 @@ class Application
     window.albumScraper = new window.AlbumScraper()
     window.contentView  = new window.ContentScriptView model: albumScraper
     window.portRouter   = new window.PortRouter()
+
     portRouter.albumScraper = albumScraper
     portRouter.bindAll()
 
     contentView.render()
   background: ->
-    chrome.extension.onConnect.addListener (port) ->
-      port.onMessage.addListener (msg) ->
-        console.log("playing #{msg.track}")
-        template = $('#player-template').html()
-        template = $(template)
-        template.find('source').attr('src', msg.track)
-        $('#player').html('')
-        $('#player').append(template)
-  poup: ->
+    window.album      = new window.AlbumCollection()
+    window.portRouter = new window.PortRouter()
+    window.backgroundView = new window.BackgroundView model: album
+
+    portRouter.album  = album
+    portRouter.bindAll()
+
+    backgroundView.render()
+  popup: ->
     #
 
 window.Application = Application

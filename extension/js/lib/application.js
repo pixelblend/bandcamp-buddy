@@ -17,20 +17,17 @@
     };
 
     Application.prototype.background = function() {
-      return chrome.extension.onConnect.addListener(function(port) {
-        return port.onMessage.addListener(function(msg) {
-          var template;
-          console.log("playing " + msg.track);
-          template = $('#player-template').html();
-          template = $(template);
-          template.find('source').attr('src', msg.track);
-          $('#player').html('');
-          return $('#player').append(template);
-        });
+      window.album = new window.AlbumCollection();
+      window.portRouter = new window.PortRouter();
+      window.backgroundView = new window.BackgroundView({
+        model: album
       });
+      portRouter.album = album;
+      portRouter.bindAll();
+      return backgroundView.render();
     };
 
-    Application.prototype.poup = function() {};
+    Application.prototype.popup = function() {};
 
     return Application;
 
