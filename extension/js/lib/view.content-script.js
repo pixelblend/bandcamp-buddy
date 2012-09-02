@@ -22,9 +22,8 @@
     };
 
     ContentScriptView.prototype.initialize = function() {
-      var _base;
       this.model = this.options.model;
-      this.container = (typeof (_base = this.options).container === "function" ? _base.container(this.options.container) : void 0) ? void 0 : 'body';
+      this.container = this.options.container != null ? this.options.container : $('body');
       this.$el.text('Add to list');
       this.$el.hide();
       return this.$el.appendTo(this.container);

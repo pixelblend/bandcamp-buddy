@@ -6,7 +6,7 @@ class ContentScriptView extends Backbone.View
     click: 'addToList'
   initialize: () ->
     @model = @options.model
-    @container = if @options.container? @options.container else 'body'
+    @container = if @options.container? then @options.container else $('body')
     @$el.text 'Add to list'
     @$el.hide()
     @$el.appendTo(@container)
