@@ -1,7 +1,6 @@
 class AlbumScraper
   album: null
-  constructor: ->
-    #
+  constructor: () ->
   parse: (dom='html') ->
     # find JS snippet that defines album object
     albumVar = $(dom).html().match(/var TralbumData (.|\n)*?^};$/gim)[0]
@@ -13,6 +12,9 @@ class AlbumScraper
     if @album?
       # send to port-router
       console.log 'album', @album
+      @trigger 'update', @album
+
+_.extend AlbumScraper.prototype, Backbone.Events
 
 window.AlbumScraper = AlbumScraper
 

@@ -13,12 +13,17 @@
       albumVar = $(dom).html().match(/var TralbumData (.|\n)*?^};$/gim)[0];
       eval(albumVar);
       this.album = TralbumData;
-      if (this.album != null) return console.log('album', this.album);
+      if (this.album != null) {
+        console.log('album', this.album);
+        return this.trigger('update', this.album);
+      }
     };
 
     return AlbumScraper;
 
   })();
+
+  _.extend(AlbumScraper.prototype, Backbone.Events);
 
   window.AlbumScraper = AlbumScraper;
 
